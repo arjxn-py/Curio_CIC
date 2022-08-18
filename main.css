@@ -1,0 +1,12 @@
+body{
+    background-color: white;
+    font-family: monospace, monospace;
+    line-height: 120%;
+    display: block;
+}
+
+h1,h3{
+    display: inline;
+    background-color: white;
+    padding: 20px 5px;
+}
