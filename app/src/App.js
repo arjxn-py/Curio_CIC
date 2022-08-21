@@ -1,5 +1,6 @@
 import React from 'react';
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player/youtube'
+import './App.css'
 
 function App() {
   return (
