@@ -64,7 +64,7 @@ export const Form = () => {
           </div>
         </div>
 
-        {isListening ? <span>🎙️</span> : <span>🛑🎙️</span>}
+        {isListening ? <span>🎙️  Recording</span> : <span>🛑🎙️ Currently Not Recording</span>}
 
         <div className="md:flex md:items-center">
           <div className="md:w-1/3"></div>
@@ -75,8 +75,16 @@ export const Form = () => {
           </div>
         </div>
       </form>
+
+    <div className="md:flex md:items-center">
+          <div className="md:w-1/3"></div>
+          <div className="md:w-2/3">
+            <audio controls className="shadow bg-purple-500 hover:bg-purple-400 hover:text-white focus:shadow-outline focus:outline-none text-gray-500 font-bold py-2 px-4 rounded" type="audio">
+            </audio>
+          </div>
+    </div>
+
+    
     </>
-
-
-    );
-  }
+  );
+}
