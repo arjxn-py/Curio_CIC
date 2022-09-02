@@ -55,6 +55,7 @@ export default class Audio extends Component {
     Mp3Recorder
       .stop()
       .getMp3()
+
       .then(([buffer , blob])=>{
         const blobURL = URL.createObjectURL(blob);
 
@@ -91,6 +92,7 @@ export default class Audio extends Component {
            </div>
            <div className="md:w-2/3">
              <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="number" min={0} max={60} placeholder='1-60'/>
+
              <button id = "record" onClick={this.getDuration} className="shadow bg-purple-500 hover:bg-purple-400 hover:text-white focus:shadow-outline focus:outline-none text-gray-500 font-bold py-2 px-4 rounded" type="button">
                Set Timer
              </button>
@@ -99,15 +101,18 @@ export default class Audio extends Component {
 
         
          {this.isRecording ? <span>🛑🎙️  Not Recording</span> : <span>🎙️ Click Record to Start Recording</span>}
+
          <div className="md:flex md:items-center">
            <div className="md:w-1/3"></div>
            <div className="md:w-2/3">
              <button id = "record" onClick={this.start} disabled={this.state.isRecording} className="shadow bg-purple-500 hover:bg-purple-400 hover:text-white focus:shadow-outline focus:outline-none text-gray-500 font-bold py-2 px-4 rounded" type="button">
                Record
              </button>
+
              {/* <button id = "stop" onClick={this.stop} disabled={!this.state.isRecording} className="shadow bg-purple-500 hover:bg-purple-400 hover:text-white focus:shadow-outline focus:outline-none text-gray-500 font-bold py-2 px-4 rounded" type="button">
                Stop
              </button> */}
+
            </div>
          </div>
 
