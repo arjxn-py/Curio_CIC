@@ -48,7 +48,7 @@ export default class Audio extends Component {
         }).catch((e) => console.error(e));
     }
     let duration = document.querySelector('input').value;
-    setTimeout(this.stop , duration * 1000)
+    setTimeout(this.stop , duration * 1200)
   }
 
   stop() {
@@ -98,7 +98,7 @@ export default class Audio extends Component {
          </div>
 
         
-         {this.isRecording ? <span>🛑🎙️  Not Recording</span> : <span>🎙️ Click Record to Start Recording</span>}
+         {this.isRecording ? <span>🛑🎙️  Not Recording</span> : <span>🎙️ Click <b>Record</b> to Start Recording</span>}
          <div className="md:flex md:items-center">
            <div className="md:w-1/3"></div>
            <div className="md:w-2/3">
