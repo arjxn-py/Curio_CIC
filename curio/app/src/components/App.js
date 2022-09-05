@@ -3,6 +3,8 @@ import React from 'react';
 // import ReactPlayer from 'react-player/youtube'
 import Audio from './recorder'
 import player from './player';
+
+
 import './App.css'
 
 function App () {
@@ -10,8 +12,7 @@ function App () {
     <div>
     <Audio/>
     {player()}
-    </div>
-    
+    </div> 
   )
 }
 

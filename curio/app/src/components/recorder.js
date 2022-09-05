@@ -48,7 +48,7 @@ export default class Audio extends Component {
         }).catch((e) => console.error(e));
     }
     let duration = document.querySelector('input').value;
-    setTimeout(this.stop , duration * 1200)
+    setTimeout(this.stop , duration * 1000)
   }
 
   stop() {
