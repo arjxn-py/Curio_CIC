@@ -101,7 +101,6 @@ export default class Audio extends Component {
 
         
          {this.isRecording ? <span>🛑🎙️  Not Recording</span> : <span>🎙️ Click Record to Start Recording</span>}
-
          <div className="md:flex md:items-center">
            <div className="md:w-1/3"></div>
            <div className="md:w-2/3">
