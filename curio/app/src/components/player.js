@@ -1,5 +1,5 @@
 import React from 'react'
-// import { ReactDOM } from 'react';
+import music from "./audio/breathe.mp3"
 
 const player = () => {
     
@@ -9,8 +9,8 @@ const player = () => {
 }
 function audioApp(){
 	var audio = new Audio();
-	var audio_folder = "audio/";
-	var audio_ext = ".mp3";
+	// var audio_folder = "./audio/";
+	// var audio_ext = ".mp3";
 	var audio_index = 1;
 	var is_playing = false;
 	var playingtrack;
@@ -22,7 +22,6 @@ function audioApp(){
 	};
 	for(var track in tracks){
 		var tb = document.createElement("div");
-        // var ab = document.createElement("audio");
 		var pb = document.createElement("button");
 		var tn = document.createElement("div");
 		tb.className = "trackbar";
@@ -32,7 +31,6 @@ function audioApp(){
 		pb.id = tracks[track][1];
 		pb.addEventListener("click", switchTrack);
 		tb.appendChild(pb);
-        // tb.appendChild(ab);
 		tb.appendChild(tn);
 		trackbox.appendChild(tb);
 		audio_index++;
@@ -48,7 +46,8 @@ function audioApp(){
 			    is_playing = true;
 				_(playingtrack).style.background = "url(images/play.png)";
 			    event.target.style.background = "url(images/pause.png)";
-			    audio.src = audio_folder+event.target.id+audio_ext;
+			    // audio.src = audio_folder+event.target.id+audio_ext;
+				audio.src = music;
 	            audio.play();
 			} else {
 			    audio.pause();
@@ -59,7 +58,8 @@ function audioApp(){
 			is_playing = true;
 			event.target.style.background = "url(images/pause.png)";
 			if(playingtrack !== event.target.id){
-				audio.src = audio_folder+event.target.id+audio_ext;
+				// audio.src = audio_folder+event.target.id+audio_ext;
+				audio.src = music;
                 audio.play();
 			}
 		}
