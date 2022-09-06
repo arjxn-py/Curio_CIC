@@ -1,53 +1,49 @@
 import React from 'react'
-import music from "./audio/breathe.mp3"
+
 
 const player = () => {
-    
 
     function _(id){
-	return document.getElementById(id);
-}
-function audioApp(){
-	var audio = new Audio();
-	// var audio_folder = "./audio/";
-	// var audio_ext = ".mp3";
-	var audio_index = 1;
-	var is_playing = false;
-	var playingtrack;
-	var trackbox = _("trackbox");
-	var tracks = {
-	    "track1":["Fast Lane", "fast_lane"],
-		"track2":["Breathe", "breathe"],
-		"track3":["Stranglehold", "stranglehold"]
-	};
-	for(var track in tracks){
-		var tb = document.createElement("div");
-		var pb = document.createElement("button");
-		var tn = document.createElement("div");
-		tb.className = "trackbar";
-		pb.className = "playbutton";
-		tn.className = "trackname";
-		tn.innerHTML = audio_index+". "+tracks[track][0];
-		pb.id = tracks[track][1];
-		pb.addEventListener("click", switchTrack);
-		tb.appendChild(pb);
-		tb.appendChild(tn);
-		trackbox.appendChild(tb);
-		audio_index++;
+		return document.getElementById(id);
 	}
-	audio.addEventListener("ended",function(){
-	    _(playingtrack).style.background = "url(images/play.png)";
-		playingtrack = "";
-		is_playing = false;
-	});
+	function audioApp(){
+		var audio = new Audio();
+		var audio_index = 1;
+		var is_playing = false;
+		var playingtrack;
+		var trackbox = _("trackbox");
+		var tracks = {
+			"track1":["Fast Lane", "fast_lane"],
+			"track2":["Breathe", "breathe"],
+			"track3":["Stranglehold", "stranglehold"]
+		};
+		for(var track in tracks){
+			var tb = document.createElement("div");
+			var pb = document.createElement("button");
+			var tn = document.createElement("div");
+			tb.className = "trackbar";
+			pb.className = "playbutton";
+			tn.className = "trackname";
+			tn.innerHTML = audio_index+". "+tracks[track][0];
+			pb.id = tracks[track][1];
+			pb.addEventListener("click", switchTrack);
+			tb.appendChild(pb);
+			tb.appendChild(tn);
+			trackbox.appendChild(tb);
+			audio_index++;
+		}
+		audio.addEventListener("ended",function(){
+			_(playingtrack).style.background = "url(images/play.png)";
+			playingtrack = "";
+			is_playing = false;
+		});
 	function switchTrack(event){
 		if(is_playing){
 		    if(playingtrack !== event.target.id){
 			    is_playing = true;
 				_(playingtrack).style.background = "url(images/play.png)";
 			    event.target.style.background = "url(images/pause.png)";
-			    // audio.src = audio_folder+event.target.id+audio_ext;
-				audio.src = music;
+				audio.src = `audio/${playingtrack}.mp3`
 	            audio.play();
 			} else {
 			    audio.pause();
@@ -58,9 +54,8 @@ function audioApp(){
 			is_playing = true;
 			event.target.style.background = "url(images/pause.png)";
 			if(playingtrack !== event.target.id){
-				// audio.src = audio_folder+event.target.id+audio_ext;
-				audio.src = music;
                 audio.play();
+				audio.src = `audio/${playingtrack}.mp3`
 			}
 		}
 		playingtrack = event.target.id;
