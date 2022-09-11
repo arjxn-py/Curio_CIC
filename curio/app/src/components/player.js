@@ -30,6 +30,8 @@ const player = () => {
 			tb.appendChild(pb);
 			tb.appendChild(tn);
 			trackbox.appendChild(tb);
+			// var ap = document.createElement("audio");
+			// trackbox.appendChild(ap)
 			audio_index++;
 		}
 		audio.addEventListener("ended",function(){
