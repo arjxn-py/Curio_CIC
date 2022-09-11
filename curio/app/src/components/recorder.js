@@ -100,18 +100,13 @@ export default class Audio extends Component {
          </div>
 
         
-         {this.isRecording ? <span>🛑🎙️  Not Recording</span> : <span>🎙️ Click Record to Start Recording</span>}
+         {this.isRecording ? <span>🛑🎙️  Not Recording</span> : <span>🎙️ Click <b>Record</b> to Start Recording</span>}
          <div className="md:flex md:items-center">
            <div className="md:w-1/3"></div>
            <div className="md:w-2/3">
              <button id = "record" onClick={this.start} disabled={this.state.isRecording} className="shadow bg-purple-500 hover:bg-purple-400 hover:text-white focus:shadow-outline focus:outline-none text-gray-500 font-bold py-2 px-4 rounded" type="button">
                Record
              </button>
-
-             {/* <button id = "stop" onClick={this.stop} disabled={!this.state.isRecording} className="shadow bg-purple-500 hover:bg-purple-400 hover:text-white focus:shadow-outline focus:outline-none text-gray-500 font-bold py-2 px-4 rounded" type="button">
-               Stop
-             </button> */}
-
            </div>
          </div>
 
