@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Translater</title>
+    <link rel="stylesheet" href="style2.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
+    <script src="https://markjivko.com/dist/recorder.js"></script>
+    <script>
+        jQuery(document).ready(function () {
+            var $ = jQuery;
+            var myRecorder = {
+            objects: {
+                context: null,
+                stream: null,
+                recorder: null
+            },
+            init: function () {
+                if (null === myRecorder.objects.context) {
+                    myRecorder.objects.context = new (window.AudioContext || window.webkitAudioContext);
+                    }},
+            start: function () {
+                var options = {audio: true, video: false};
+                navigator.mediaDevices.getUserMedia(options).then(function (stream) {
+                    myRecorder.objects.stream = stream;
+                    myRecorder.objects.recorder = new Recorder(myRecorder.objects.context.createMediaStreamSource(stream),{numChannels: 1});
+                    myRecorder.objects.recorder.record();
+                    }).catch(function (err) {});
+                },
+            stop: function (listObject) {
+                if (null !== myRecorder.objects.stream) {
+                    myRecorder.objects.stream.getAudioTracks()[0].stop();
+                }
+                if (null !== myRecorder.objects.recorder) {
+                    myRecorder.objects.recorder.stop();
+
+                    // Validate object
+                    if (null !== listObject && 'object' === typeof listObject && listObject.length > 0) {
+                            
+                            // Export the WAV file
+                            myRecorder.objects.recorder.exportWAV(function (blob) {
+                                var url = (window.URL || window.webkitURL).createObjectURL(blob);
+
+                                // Prepare the playback
+                                var audioObject = $('<audio controls></audio>').attr('src', url);
+
+                                // Prepare the download link
+                                var downloadObject = $('<a>&#9660;</a>').attr('href', url).attr('download', new Date().toUTCString() + '.wav');
+
+                                // Wrap everything in a row
+                                var holderObject = $('<div class="row"></div>').append(audioObject).append(downloadObject);
+
+                                // Append to the list
+                                listObject.append(holderObject);
+                            });
+                        }
+                    }
+                }
+            };
+
+            // Prepare the recordings list
+            var listObject = $('[data-role="recordings"]');
+
+            // Prepare the record button
+            $('[data-role="controls"] > button').click(function () {
+                
+                // Initialize the recorder
+                myRecorder.init();
+
+                // Get the button state 
+                var buttonState = !!$(this).attr('data-recording');
+
+                // Toggle
+                if (!buttonState) {
+                    $(this).attr('data-recording', 'true');
+                    myRecorder.start();
+                } else {
+                    $(this).attr('data-recording', '');
+                    myRecorder.stop(listObject);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <header class="header">
+            <div class="outer-box" id="ob1">
+                <span class="text" id="txt1">In Your Language</span>
+            </div>
+            <div class="header-box">
+                <form action="#" name="myForm" id="myForm">
+                    <input type="text" name="link" id="link" placeholder="enter your link">
+                </form>    
+                <img class="logo" src="/img/curio_logo.jpg" alt="CURIO">
+                <button type="button">Enter</button>
+            </div>
+    </header>link
+    <main class="main">
+        <div class="border">
+            <form action="#" name="my" id="my" class="detail-form">
+                <label for="uname" class="det">Name :</label><br>
+                <input type="text" id="uname" name="uname" class="det-entry"><br>
+                <label for="u_mno" class="det">Mobile No. :</label><br>
+                <input type="number" id="u_mno" name="u_mno" class="det-entry"><br>
+                <label for="u_mail" class="det">Email :</label><br>
+                <input type="email" id="u_mail" name="u_mail" class="det-entry"><br>
+                <input type="submit" class="submit"><br>
+            </form>
+        </div>
+        <div class="content">
+            <div class="video-recorder">
+                <div class="video-play">
+                    <iframe src="" frameborder="0" class="video"></iframe>
+                </div>
+                <div class="holder">
+                    <input type="text" id="low-time" name="low-time">
+                    <div data-role="controls">
+                        <button class="start-button">Record</button>
+                    </div>
+                    <input type="text" id="high-time" name="high-time">
+                    <div data-role="recordings">
+                        <div class="row">
+                            <audio controls="" src="blob:http://127.0.0.1:5500/d9c17e36-bc74-4dd6-8652-f38afa5c79dd"></audio>
+                            <a href="blob:http://127.0.0.1:5500/d9c17e36-bc74-4dd6-8652-f38afa5c79dd" download="Sat, 10 Sep 2022 18:41:36 GMT.wav">▼</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <article>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima debitis ipsam maiores dolore aliquam impedit magni non corrupti doloribus asperiores dolorum, cum harum dolorem facere? Magnam ipsum voluptates accusantium eligendi!<br>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis adipisci sed, minus, veniam odit nostrum voluptatum quaerat eum laboriosam veritatis quidem praesentium commodi fuga, impedit dolorum debitis consequuntur rerum pariatur.<br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, autem magni consequuntur cum harum sequi dolor nisi error odit porro quos nesciunt voluptatum quia! Ratione corporis dolor aliquid consequatur natus!</p>
+    </article>
+    <footer class="footer">
+        <div class="details">
+            <div class="detail-value">
+                <p>Developed by Curio</p>
+            </div>
+            <div class="detail-value" id="dv2">
+                <p>Email : deepspn18@gmail.com</p>
+            </div>
+            <div class="detail-value">
+                <p>Contact No. : *****-*****</p>
+            </div>
+        </div>
+    </footer>
+    <script src="details.js"></script>
+</body>
+</html>
