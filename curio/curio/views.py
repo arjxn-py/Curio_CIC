@@ -9,10 +9,16 @@ def index(request):
     params = {
         'part' : 'snippet',
         'q' : 'python',
-        'key' : settings.YOUTUBE_DATA_API_KEY
+        'key' : settings.YOUTUBE_DATA_API_KEY,
+        'maxResults' : 9,
+        'type' : 'video'
     }
 
     r = requests.get(search_url , params=params)
-    print(r.text)
+
+    results = r.json()['items']
+
+    for result in results:
+        print(result['id']['videoId'])
 
     return render(request, 'index.html')
