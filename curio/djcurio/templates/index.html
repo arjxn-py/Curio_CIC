@@ -17,7 +17,7 @@
 		}
     </style>
 
-    <title>Document</title>
+    <title>CURIO</title>
 </head>
 <body>
     {% load static %}
@@ -48,10 +48,13 @@
                 </ul>
               </li>
             </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+
+            <form method="POST" class="d-flex" role="search">
+              {% csrf_token %}
+              <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
+
           </div>
         </div>
       </nav>
@@ -70,16 +73,18 @@
 
       <h2 style="padding-left: 10%; padding-top: 4%; font-family: Verdana, Geneva, Tahoma, sans-serif;">Search Results</h2>
       <div class="row" style="padding-top: 1%; padding-left: 10%;">
-       
+        
+        {% for video in videos %}
         <div class="card" style="width: 18rem;">
-          <img src="{% static 'assets/playbutton.png' %}" class="card-img-top" alt="...">
+          <img src="{{video.thumbnail}}" class="card-img-top" alt="...">
           <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">WATCH</a>
+              <h5 class="card-title">{{video.title}}</h5>
+              <p class="card-text">{{video.duration}} minutes</p>
+              <a href="/djcurio/translate" class="btn btn-primary">WATCH</a>
           </div>
-      </div>
-      
+        </div>
+        {% endfor %}
+
      </div>
 
 
