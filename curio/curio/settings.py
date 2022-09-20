@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'webpack_loader',
+    'djcurio',
 ]
 
 MIDDLEWARE = [
@@ -64,7 +65,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            'templates/',
+            'djcurio/templates',
             # os.path.join(BASE_DIR,'app/build/'),
             # os.path.join(BASE_DIR, "templates"),
         ],
@@ -138,3 +139,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'app/build/static')
 ]
+
+YOUTUBE_DATA_API_KEY = 'AIzaSyCPWMPAp1bgYvBDzIqZCh5oCr5nldAP2sI'

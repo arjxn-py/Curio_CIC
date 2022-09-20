@@ -1,9 +1,6 @@
-# from django.contrib import admin
-# from django.urls import path , include
-# from django.views.generic import TemplateView
-# from . import views
+from django.urls import path
+from . import views
 
-# urlpatterns = [
-#     path('', views.home , name="home"),
-#     path('', TemplateView.as_view(template_name="index.html")),
-# ]
+urlpatterns = [
+    path('translate', views.translate , name='translate')
+]
