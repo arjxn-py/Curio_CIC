@@ -65,7 +65,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            'templates/',
+            'djcurio/templates',
             # os.path.join(BASE_DIR,'app/build/'),
             # os.path.join(BASE_DIR, "templates"),
         ],
