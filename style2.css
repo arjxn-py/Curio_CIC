@@ -1,0 +1,192 @@
+p {
+  margin-top: 1rem;
+}
+
+body {
+	line-height: 1.5;
+	font-family: sans-serif;
+	color:black;
+	margin:2em;
+}
+
+
+red {
+	color: red;
+}
+
+#controls {
+  position: relative;
+  left: -18px;
+  display: flex;
+  margin-top: 2rem;
+  max-width: 28em;
+} 
+
+button {
+  flex-grow: 1;
+  height: 3rem;
+  min-width: 10rem;
+  border: none;
+  border-radius: 0.15rem;
+  background: #ed341d;
+  margin-left: 2px;
+  box-shadow: inset 0 -0.15rem 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:#ffffff;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+button:hover, button:focus {
+  outline: none;
+  background: #c72d1c;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
+button:active {
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.2);
+  line-height: 3rem;
+}
+
+button:disabled {
+  pointer-events: none;
+  background: lightgray;
+}
+
+button:first-child {
+  margin-left: 0;
+}
+
+audio {
+  position: relative;
+  left: -20px;
+  display: block;
+  width: 400px;
+  margin-top: 0.2rem;
+}
+
+li {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+#timers {
+  margin: 5px;
+  align-content: center;
+  justify-content: center;
+}
+
+#low-time , #high-time {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 18px;
+  margin: 0 auto;
+}
+
+#recordingsList{
+	max-width: 28em;
+}
+
+header {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 160px;
+  background-color: rgb(154, 3, 3);
+  /* justify-content: left; */
+}
+
+header img {
+  z-index: 5;
+  height: 110px;
+  float: left;
+  margin: 0 100px; 
+  margin-top: 25px;
+  border-radius: 5px;
+}
+
+header p{
+  padding: 10px 0px;
+  margin-top: 40px;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 40px;
+  color: rgb(166, 251, 251);
+  background-color: rgb(119, 1, 1);
+  height: 65px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+main {
+  position: relative;
+  top: 170px;
+}
+
+#search-pannel {
+  padding: 0 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main div#search-pannel input {
+  margin-right: 40px;
+  height: 30px;
+  width: 350px;
+  font-size: 13px;
+}
+
+#search-button {
+  height: 30px;
+  width: 40px;
+}
+
+#record {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+div#video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+div#video iframe {
+  margin-top: 20px;
+  height: 300px;
+  width: 600px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin-bottom: 10px;
+}
+
+#to-remove {
+  position: relative;
+  top: -150px;
+}
+
+#show-au {
+  border: none;
+  position: static;
+}
+
+#show {
+  margin-top: 10px;
+  width: 200px;
+}

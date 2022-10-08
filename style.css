@@ -1,0 +1,28 @@
+body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+.translate-but {
+    display: inline;
+    position: relative;
+    left: -300px;
+    margin-bottom: 20px;
+    margin-right: 30px;
+}
+.view-but {
+    display: inline;
+    position: relative;
+    left: -300px;
+    margin-bottom: 20px;
+}
+
+.banner {
+    margin-bottom: 20px;
+}
+
+.col-md-12 {
+    position: relative;
+    right: -140px;
+    max-width: 1200px;
+}
